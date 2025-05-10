@@ -1,0 +1,29 @@
+.login {
+    grid-column: 2 / -2;
+    background-color: #18181B;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    align-items: center;
+    padding: 32px 64px;
+    border-radius: 16px;
+    filter: drop-shadow(10px 10px 0 #007DFE);
+
+    &__switch {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+
+        &__switcher {
+            color: #007DFE;
+            cursor: pointer;
+        }
+    }
+}
+
+@media screen and (min-width: 1920px) {
+    .login {
+        grid-column: 3 / -2;
+    }
+}
