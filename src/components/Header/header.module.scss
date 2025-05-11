@@ -42,8 +42,7 @@
             border-radius: 100px;
             height: 32px;
             width: 32px;
-            border: #007DFE solid 1px;
-            color: #007DFE;
+            border: #B7B7B7 solid 1px;
             background-color: transparent;
             display: flex;
             align-items: center;
@@ -58,10 +57,11 @@
             &:hover {
                 border: none;
                 background-color: #007DFE;
+                border: #007DFE solid 1px;
                 transition: 0.5s;
 
                 img {
-                    filter: brightness(0) invert(1);
+                    filter: brightness(0);
                     transition: 0.5s;
                 }
             }

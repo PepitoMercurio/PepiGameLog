@@ -1,0 +1,48 @@
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &__options {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 16px;
+        font-size: 24px;
+
+        > *:first-child {
+            grid-column: 2 / 7;
+        }
+
+        > *:last-child {
+            grid-column: -4 / -2;
+            text-align: right;
+        }
+    }
+
+
+    &__games {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 16px;
+
+        > *:nth-child(5n + 1) {
+            grid-column: 2 / 4;
+        }
+
+        > *:nth-child(5n + 2) {
+            grid-column-start: 4 / 6;
+        }
+
+        > *:nth-child(5n + 3) {
+            grid-column-start: 6 / 8;
+        }
+
+        > *:nth-child(5n + 4) {
+            grid-column-start: 8 / 10;
+        }
+
+        > *:nth-child(5n + 5) {
+            grid-column-start: 10 / 12;
+        }
+    }
+}
