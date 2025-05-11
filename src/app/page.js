@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import Header from "@/components/Header";
 import MiniGameList from "@/components/MiniGameList";
 import StatComponent from "@/components/StatComponent";
+import Leaderboard from "@/components/Leaderboard";
 import style from "./page.module.scss"
 
 export default function Home() {
@@ -26,7 +27,11 @@ export default function Home() {
         <StatComponent value={1500} label={"Avis Enregistrés"} />
       </div>
 
-      <div>
+      <div className={style.home__leaderboard} >
+        <Leaderboard />
+      </div>
+
+      <div className={style.home__lists} >
         <MiniGameList title={"Derniers Jeux Ajoutés"} />
         <MiniGameList title={"Jeux les Mieux Notés"} />
         <MiniGameList title={"Jeux à venir"} />

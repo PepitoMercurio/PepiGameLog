@@ -24,6 +24,20 @@
   }
 
   &__stats {
-    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  &__leaderboard {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 16px;
+    margin: 0 32px;
+  }
+
+  &__lists {
+    margin: 0 32px;
   }
 }
