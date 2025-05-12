@@ -84,6 +84,8 @@
         
         &__picture {
             height: 40px;
+            width: 40px;
+            object-fit: cover;
             border-radius: 100%;
             cursor: pointer;
             transition: 0.5s;

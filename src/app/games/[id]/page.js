@@ -3,6 +3,7 @@ import style from "./style.module.scss"
 import BarChart from "@/components/BarChart";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
+import ReviewCard from "@/components/ReviewCard";
 
 export const metadata = {
   title: "[NAME] - PepiGamesLog",
@@ -45,11 +46,17 @@ Nam neque reiciendis qui delectus dolor sit possimus molestias ex dignissimos do
 
             <div className={style.game__ratings}>
                 <div className={style.bigline}/>
+                <h2 className={style.game__ratings__title}>Notes</h2>
                 <form className={style.game__ratings__form}>
                     <StarsInput />
                     <Input type="text" placeholder={"Entrez votre avis... (optionnel)"} />
                     <Button text={"Envoyer"}/>
                 </form>
+                <div className={style.game__ratings__list} >
+                    <ReviewCard />
+                    <ReviewCard />
+                    <ReviewCard />
+                </div>
             </div>
         </div>
     )
