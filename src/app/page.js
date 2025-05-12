@@ -8,9 +8,12 @@ import MiniGameList from "@/components/MiniGameList";
 import StatComponent from "@/components/StatComponent";
 import Leaderboard from "@/components/Leaderboard";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 import style from "./page.module.scss";
 
 export default function Home() {
+  const router = useRouter();
+
   const [userInfos, setUserInfos] = useState({
     email: "",
     username: "",
@@ -33,7 +36,7 @@ export default function Home() {
       const token = Cookies.get("auth_token");
 
       if (!token) {
-        console.log("Aucun token trouvé");
+        router.push("/auth/login");
         return;
       }
 
