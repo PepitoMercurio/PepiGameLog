@@ -2,15 +2,17 @@ import style from "./auth_form.module.scss"
 import Input from "../Input";
 import Button from "../Button";
 
-const AuthForm = ({type}) => {
+const AuthForm = ({type, data, handleChange, onSubmit}) => {
     return (
-        <form className={style.auth_form}>
+        <form className={style.auth_form} onSubmit={onSubmit}>
             {type === "signin" &&
                 <Input 
                     type={"text"}
                     label={"Pseudo"}
                     name={"username"}
                     placeholder={"ex: John Doe"}
+                    value={data.username}
+                    onChange={handleChange}
                 />
             }
             <Input 
@@ -18,6 +20,8 @@ const AuthForm = ({type}) => {
                 label={"Email"}
                 name={"email"}
                 placeholder={"ex: john.doe@email.com"}
+                value={data.email}
+                onChange={handleChange}
             />
 
             <Input 
@@ -25,6 +29,8 @@ const AuthForm = ({type}) => {
                 label={"Mot de passe"}
                 name={"password"}
                 placeholder={""}
+                value={data.password}
+                onChange={handleChange}
             />
 
             {type === "signin" &&
@@ -33,11 +39,14 @@ const AuthForm = ({type}) => {
                     label={"Confirmer le mot de passe"}
                     name={"confirmPassword"}
                     placeholder={""}
+                    value={data.confirmPassword}
+                    onChange={handleChange}
                 />
             }
 
             <Button
                 text={"Connexion"}
+                type={"submit"}
             />
 
 

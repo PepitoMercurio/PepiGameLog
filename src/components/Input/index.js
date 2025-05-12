@@ -1,6 +1,6 @@
 import style from "./input.module.scss"
 
-const Input = ({type, label, placeholder, value, onChange}) => {
+const Input = ({type, label, placeholder, name, value, onChange}) => {
     return (
         <div className={style.input}>
             <label>{label}</label>
@@ -9,8 +9,9 @@ const Input = ({type, label, placeholder, value, onChange}) => {
                     type={type}
                     className={style.input__box__input}
                     placeholder={placeholder}
-                    // value={value}
-                    // onChange={onChange}
+                    name={name}
+                    value={value}
+                    onChange={onChange}
                 />
             </div>
         </div>

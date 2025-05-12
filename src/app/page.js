@@ -1,4 +1,8 @@
-import { redirect } from "next/navigation";
+"use client"
+
+import { useState, useEffect } from "react";
+import Cookies from "js-cookie";
+import { jwtDecode } from "jwt-decode";
 import Header from "@/components/Header";
 import MiniGameList from "@/components/MiniGameList";
 import StatComponent from "@/components/StatComponent";
@@ -6,21 +10,51 @@ import Leaderboard from "@/components/Leaderboard";
 import style from "./page.module.scss"
 
 export default function Home() {
-  // redirect("/auth/login");
+  const [userInfos, setUserInfos] = useState({
+    email: "",
+    username: "",
+    id: null
+  });
+  
+  useEffect(() => {
+    const token = Cookies.get('auth_token');
+
+    if (token) {
+      try {
+        const decoded = jwtDecode(token);
+        console.log("Infos du token :", decoded);
+  
+        setUserInfos({
+          id: decoded.id,
+          email: decoded.email,
+          username: decoded.username
+        });
+  
+      } catch (error) {
+        console.error("Token invalide :", error);
+      }
+    } else {
+      console.log("Aucun token trouvé");
+      setConnected(false);
+    }
+  }, []);
+
   return (
     <div className={style.home}>
       <Header />
-      <div className={style.home__welcome} >
-        <p className={style.home__welcome__message}>
-          Bienvenue
-        </p>
+      {userInfos.username &&
+        <div className={style.home__welcome} >
+          <p className={style.home__welcome__message}>
+            Bienvenue
+          </p>
 
-        <img className={style.home__welcome__icon} src="https://media.discordapp.net/attachments/1050521750233940028/1370774752150687865/pepito_pp_2024.png?ex=6820b8f8&is=681f6778&hm=3369cd5c73bd53912d8b88f79c55faeadca35d475048b019444ba842023308e9&=&format=webp&quality=lossless&width=930&height=930"/>
-        
-        <p className={style.home__welcome__message}>
-          John Doe
-        </p>
-      </div>
+          <img className={style.home__welcome__icon} src="/assets/images/empty-profile.png"/>
+          
+          <p className={style.home__welcome__message}>
+            {userInfos.username}
+          </p>
+        </div>
+      }
 
       <div className={style.home__stats}>
         <StatComponent value={500} label={"Jeux Enregistrés"} />

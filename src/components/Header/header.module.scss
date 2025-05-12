@@ -76,6 +76,10 @@
         grid-column: 10 / -1;
         gap: 20px;
 
+        * {
+            cursor: pointer;
+        }
+
         &__barcode {
             height: 32px;
             cursor: pointer;

@@ -7,7 +7,7 @@ const Leaderboard = ({first, second, third}) => {
 
             <div className={style.leaderboard__top}>
                 <div className={style.leaderboard__top__second}>
-                    <img className={style.leaderboard__top__second__icon} />
+                    <img className={style.leaderboard__top__second__icon} src="/assets/images/empty-profile.png" />
                     <div className={style.leaderboard__top__second__podium}>
                         <p className={style.leaderboard__top__third__podium__rank} >2</p>
                         <p>300 Avis</p>
@@ -15,7 +15,7 @@ const Leaderboard = ({first, second, third}) => {
                 </div>
 
                 <div className={style.leaderboard__top__first}>
-                    <img className={style.leaderboard__top__first__icon} />
+                    <img className={style.leaderboard__top__first__icon} src="/assets/images/empty-profile.png" />
                     <div className={style.leaderboard__top__first__podium}>
                         <p className={style.leaderboard__top__third__podium__rank} >1</p>
                         <p>300 Avis</p>
@@ -23,7 +23,7 @@ const Leaderboard = ({first, second, third}) => {
                 </div>
                    
                 <div className={style.leaderboard__top__third}>
-                    <img className={style.leaderboard__top__third__icon} />
+                    <img className={style.leaderboard__top__third__icon} src="/assets/images/empty-profile.png" />
 
                     <div className={style.leaderboard__top__third__podium}>
                         <p className={style.leaderboard__top__third__podium__rank} >3</p>
