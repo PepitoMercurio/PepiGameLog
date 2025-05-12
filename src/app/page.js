@@ -9,7 +9,6 @@ import StatComponent from "@/components/StatComponent";
 import Leaderboard from "@/components/Leaderboard";
 import axios from "axios";
 import style from "./page.module.scss";
-import Image from "next/image";
 
 export default function Home() {
   const [userInfos, setUserInfos] = useState({
@@ -73,7 +72,7 @@ export default function Home() {
       {userInfos.username && (
         <div className={style.home__welcome}>
           <p className={style.home__welcome__message}>Bienvenue</p>
-          <Image
+          <img
             className={style.home__welcome__icon}
             src="/assets/images/empty-profile.png"
             alt="Profil"

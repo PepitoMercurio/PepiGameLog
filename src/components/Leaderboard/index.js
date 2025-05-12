@@ -1,5 +1,4 @@
 import style from "./leaderboard.module.scss";
-import Image from "next/image";
 
 const Leaderboard = ({data}) => {
     console.log("LEADER", data);
@@ -17,7 +16,7 @@ const Leaderboard = ({data}) => {
       <div className={style.leaderboard__top}>
         {second && (
           <div className={style.leaderboard__top__second}>
-            <Image
+            <img
               className={style.leaderboard__top__second__icon}
               src={second.picture || "/assets/images/empty-profile.png"}
               alt={second.picture || "Utilisateur 2"}
@@ -31,7 +30,7 @@ const Leaderboard = ({data}) => {
 
         {first && (
           <div className={style.leaderboard__top__first}>
-            <Image
+            <img
               className={style.leaderboard__top__first__icon}
               src={first.picture || "/assets/images/empty-profile.png"}
               alt={first.picture || "Utilisateur 1"}
@@ -45,7 +44,7 @@ const Leaderboard = ({data}) => {
 
         {third && (
           <div className={style.leaderboard__top__third}>
-            <Image
+            <img
               className={style.leaderboard__top__third__icon}
               src={third.picture || "/assets/images/empty-profile.png"}
               alt={third.picture || "Utilisateur 3"}

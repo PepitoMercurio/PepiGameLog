@@ -10,7 +10,7 @@ import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
 import React, {useState, useEffect} from "react";
 import axios from "axios";
-import Image from "next/image";
+
 
 const GamePage = ({ params }) => { 
     const { id } = React.use(params);
@@ -82,7 +82,7 @@ const GamePage = ({ params }) => {
     return (
         <div className={style.game}>
             <div className={style.game__banner}>
-                <Image className={style.game__banner__cover} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTemQnXFrbtqxnRAhY9jrdG2k9ld78DklQUrQ&s" alt="cover"/>
+                <img className={style.game__banner__cover} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTemQnXFrbtqxnRAhY9jrdG2k9ld78DklQUrQ&s" alt="cover"/>
 
                 <div className={style.game__banner__infos}>
                     <h1 className={style.game__banner__infos__title}>{data.name}</h1>

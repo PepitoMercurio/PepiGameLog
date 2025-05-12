@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import { jwtDecode } from 'jwt-decode';
-import Image from "next/image";
 
 const Header = () => {
     const router = useRouter();
@@ -52,19 +51,19 @@ const Header = () => {
     return (
         <header className={styles.header}>
             <div className={styles.header__logo} onClick={() => router.push("/")}>
-                <Image src="/assets/images/pepigamelog-logo.png" alt="logo" />
+                <img src="/assets/images/pepigamelog-logo.png" alt="logo" />
                 <p className={styles.header__logo__text}>PepiGamesLog</p>
             </div>
 
             {connected ? (
                 <div className={styles.header__buttons}>
-                    <Image 
+                    <img 
                         className={styles.header__buttons__picture} 
                         src={"/assets/images/empty-profile.png"} 
                         alt="Profil Picture"  
                         onClick={() => router.push(`/profile/${userInfos.id}`)} 
                     />
-                    <Image 
+                    <img 
                         className={styles.header__buttons__barcode} 
                         src={"/assets/icons/disconnect.svg"} 
                         alt="Déconnexion" 
