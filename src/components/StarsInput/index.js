@@ -25,4 +25,22 @@ const StarsInput = () => {
     );
 };
 
-export default StarsInput;
+const StarsViewer = ({value}) => {
+    return (
+        <div className={style.stars}>
+            {Array.from({ length: 5 }, (_, index) => (
+                <img
+                    key={index}
+                    className={` ${value > index ? style.stars__star__selected : style.stars__star}`}
+                    src="/assets/icons/star.svg"
+                    alt="star"
+                />
+            ))}
+        </div>
+    )
+}
+
+export {
+    StarsInput,
+    StarsViewer
+};

@@ -1,6 +1,8 @@
-import StarsInput from "@/components/StarsInput";
+import {StarsInput, StarsViewer} from "@/components/StarsInput";
 import style from "./style.module.scss"
 import BarChart from "@/components/BarChart";
+import Input from "@/components/Input";
+import Button from "@/components/Button";
 
 export const metadata = {
   title: "[NAME] - PepiGamesLog",
@@ -43,7 +45,11 @@ Nam neque reiciendis qui delectus dolor sit possimus molestias ex dignissimos do
 
             <div className={style.game__ratings}>
                 <div className={style.bigline}/>
-                <StarsInput />
+                <form className={style.game__ratings__form}>
+                    <StarsInput />
+                    <Input type="text" placeholder={"Entrez votre avis... (optionnel)"} />
+                    <Button text={"Envoyer"}/>
+                </form>
             </div>
         </div>
     )
