@@ -8,6 +8,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const ProfilPage = ({ params }) => {
   const { id } = React.use(params);
@@ -88,7 +89,7 @@ const ProfilPage = ({ params }) => {
     <div className={style.profile}>
       <div className={style.profile__user}>
         <div className={style.profile__user__identity}>
-          <img className={style.profile__user__identity__profile_picture} src="/assets/images/empty-profile.png" />
+          <Image className={style.profile__user__identity__profile_picture} src="/assets/images/empty-profile.png" alt="profile"/>
           <h1 className={style.profile__user__identity__name}>{userInfos.username}</h1>
         </div>
         <div className={style.profile__user__stats}>

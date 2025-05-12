@@ -50,12 +50,12 @@ const SignInPage = () => {
 
     return (
         <div className={style.signin}>
-            <h1>S'Inscrire</h1>
+            <h1>S&apos;Inscrire</h1>
 
             <AuthForm type={"signin"} data={data} handleChange={handleChange} onSubmit={handleClick} />
 
             <div className={style.signin__switch}>
-                <p>Déjà l'un des nôtres ?</p>
+                <p>Déjà l&apos;un des nôtres ?</p>
                 <p 
                     className={style.signin__switch__switcher}
                     onClick={() => {redirect("/auth/login")}}

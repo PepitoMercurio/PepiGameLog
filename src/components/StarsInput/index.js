@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import style from "./stars-input.module.scss";
+import Image from "next/image";
 
 const StarsInput = () => {
     const [selectedStars, setSelectedStars] = useState(0);
@@ -13,7 +14,7 @@ const StarsInput = () => {
     return (
         <div className={style.stars}>
             {Array.from({ length: 5 }, (_, index) => (
-                <img
+                <Image
                     key={index}
                     className={` ${selectedStars > index ? style.stars__star__selected : style.stars__star}`}
                     src="/assets/icons/star.svg"
@@ -29,7 +30,7 @@ const StarsViewer = ({value}) => {
     return (
         <div className={style.stars}>
             {Array.from({ length: 5 }, (_, index) => (
-                <img
+                <Image
                     key={index}
                     className={` ${value > index ? style.stars__star__selected : style.stars__star}`}
                     src="/assets/icons/star.svg"
