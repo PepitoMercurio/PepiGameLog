@@ -44,7 +44,7 @@ const GamesListPage = () => {
     <div className={style.games_list}>
       <div className={style.games_list__container}>
         <h1>Liste des jeux</h1>
-        <form className={style.games_list__container__filter}>
+        {/* <form className={style.games_list__container__filter}>
           <Input
             type={"search"}
             label={"Rechercher"}
@@ -57,7 +57,7 @@ const GamesListPage = () => {
               <option>TEST</option>
             </Select>
           </div>
-        </form>
+        </form> */}
 
         <GameList data={data} />
       </div>

@@ -21,6 +21,14 @@ const GamePage = ({ params }) => {
         id: null,
     });
 
+    const [rating, setRating] = useState({
+        rate: 0,
+        comment: "",
+        user_id: null,
+        game_id: id 
+    });
+
+
     const [data, setData] = useState({
         id: null,
         name: "",
@@ -49,13 +57,21 @@ const GamePage = ({ params }) => {
 
             try {
                 const decoded = jwtDecode(token);
-                console.log("Infos du token :", decoded);
                 
+                console.log("Infos du token :", decoded);
+
                 setUserInfos({
                     id: decoded.id,
                     email: decoded.email,
                     username: decoded.username,
                 });
+
+                setRating((prev) => ({
+                    ...prev,
+                    user_id: decoded.id, // on utilise directement l'id du token ici
+                    game_id: id,
+                }));
+
 
                 const response = await axios.get(
                     `${process.env.NEXT_PUBLIC_API_URL}/games/get/${id}`
@@ -79,10 +95,32 @@ const GamePage = ({ params }) => {
         fetchData();
     }, [id]);
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (!rating.rate ) return;
+
+        console.log(rating);
+        
+        try {
+            await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/rating/add`, rating);
+
+            setRating({ rate: 0, comment: "" });
+        } catch (err) {
+            console.error("Erreur lors de l'envoi de l'avis :", err);
+        }
+    };
+
+    const handleChange = (field, value) => {
+        setRating((prev) => ({
+            ...prev,
+            [field]: value,
+        }));
+    };
+
     return (
         <div className={style.game}>
             <div className={style.game__banner}>
-                <img className={style.game__banner__cover} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTemQnXFrbtqxnRAhY9jrdG2k9ld78DklQUrQ&s" alt="cover"/>
+                <img className={style.game__banner__cover} src={data.cover_url || "/assets/images/empty-game-card.png"} alt="cover"/>
 
                 <div className={style.game__banner__infos}>
                     <h1 className={style.game__banner__infos__title}>{data.name}</h1>
@@ -92,9 +130,8 @@ const GamePage = ({ params }) => {
                 {
                     data.id &&
                     <div className={style.game__banner__rating}>
-                        <h2>4.5⭐</h2>
+                        <h2>Notes</h2>
                         <BarChart game_id={data.id} />
-                        <p>450 Avis</p>
                     </div>
                 }
                 
@@ -109,11 +146,20 @@ const GamePage = ({ params }) => {
             <div className={style.game__ratings}>
                 <div className={style.bigline}/>
                 <h2 className={style.game__ratings__title}>Notes</h2>
-                <form className={style.game__ratings__form}>
-                    <StarsInput />
-                    <Input type="text" placeholder={"Entrez votre avis... (optionnel)"} />
+
+
+                <form className={style.game__ratings__form} onSubmit={handleSubmit}>
+                    <StarsInput value={rating.rate} onChange={(rate) => handleChange("rate", rate)}/>
+                    <Input
+                        type="text"
+                        placeholder={"Entrez votre avis... (optionnel)"}
+                        value={rating.comment}
+                        onChange={(e) => handleChange("comment", e.target.value)}
+                    />
                     <Button text={"Envoyer"}/>
                 </form>
+
+
                 <div className={style.game__ratings__list} >
                     {data.rating.length > 0 ? (
                         data.rating.map((review, index) => (

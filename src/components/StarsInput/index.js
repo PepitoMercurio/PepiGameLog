@@ -1,13 +1,12 @@
 'use client';
 
-import { useState } from "react";
 import style from "./stars-input.module.scss";
 
-const StarsInput = () => {
-    const [selectedStars, setSelectedStars] = useState(0);
-
+const StarsInput = ({ value = 0, onChange }) => {
     const handleClick = (index) => {
-        setSelectedStars(index + 1);
+        if (onChange) {
+            onChange(index + 1); // 1-based rating
+        }
     };
 
     return (
@@ -15,9 +14,9 @@ const StarsInput = () => {
             {Array.from({ length: 5 }, (_, index) => (
                 <img
                     key={index}
-                    className={` ${selectedStars > index ? style.stars__star__selected : style.stars__star}`}
+                    className={`${style.stars__star} ${value > index ? style.stars__star__selected : ""}`}
                     src="/assets/icons/star.svg"
-                    alt="star"
+                    alt={`${index + 1} étoile${index > 0 ? "s" : ""}`}
                     onClick={() => handleClick(index)}
                 />
             ))}
