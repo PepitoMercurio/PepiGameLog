@@ -1,0 +1,14 @@
+.form {
+    grid-column: 3 / -3;
+    background-color: #18181B;
+    padding: 32px 64px;
+    border-radius: 16px;
+    border: #B7B7B7 1px solid;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    h1 {
+        text-align: center;
+    }
+}

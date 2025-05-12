@@ -7,6 +7,15 @@
         grid-template-columns: repeat(12, 1fr);
         gap: 16px;
 
+        &__button {
+            font-size: 64px;
+            cursor: pointer;
+
+            &:hover {
+                filter: drop-shadow(0 0 10px #B7B7B7);
+            }
+        }
+
         &__cover {
             display: block;
             width: 100%;

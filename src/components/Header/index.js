@@ -57,6 +57,7 @@ const Header = () => {
 
             {connected ? (
                 <div className={styles.header__buttons}>
+                    <p onClick={() => router.push("/games/add")}>+</p>
                     <img 
                         className={styles.header__buttons__picture} 
                         src={"/assets/images/empty-profile.png"} 

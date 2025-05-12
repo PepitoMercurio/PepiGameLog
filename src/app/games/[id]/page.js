@@ -10,10 +10,13 @@ import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
 import React, {useState, useEffect} from "react";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 
 const GamePage = ({ params }) => { 
     const { id } = React.use(params);
+
+    const router = useRouter()
 
     const [userInfos, setUserInfos] = useState({
         email: "",
@@ -28,6 +31,10 @@ const GamePage = ({ params }) => {
         game_id: id 
     });
 
+    const [library, setLibrary] = useState({
+        user_id: null,
+        game_id: id 
+    });
 
     const [data, setData] = useState({
         id: null,
@@ -65,6 +72,7 @@ const GamePage = ({ params }) => {
                     email: decoded.email,
                     username: decoded.username,
                 });
+                
 
                 setRating((prev) => ({
                     ...prev,
@@ -72,6 +80,11 @@ const GamePage = ({ params }) => {
                     game_id: id,
                 }));
 
+                setLibrary((prev) => ({
+                    ...prev,
+                    user_id: decoded.id, // on utilise directement l'id du token ici
+                    game_id: id,
+                }));
 
                 const response = await axios.get(
                     `${process.env.NEXT_PUBLIC_API_URL}/games/get/${id}`
@@ -105,6 +118,8 @@ const GamePage = ({ params }) => {
             await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/rating/add`, rating);
 
             setRating({ rate: 0, comment: "" });
+
+            router.push("/")
         } catch (err) {
             console.error("Erreur lors de l'envoi de l'avis :", err);
         }
@@ -117,6 +132,16 @@ const GamePage = ({ params }) => {
         }));
     };
 
+    const addToLibrary = async (e) => {
+        e.preventDefault();
+        try {
+            await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/library/add`, library);
+            router.push("/")
+        } catch (err) {
+            console.error("Erreur lors de l'envoi :", err);
+        }
+    };
+
     return (
         <div className={style.game}>
             <div className={style.game__banner}>
@@ -126,6 +151,7 @@ const GamePage = ({ params }) => {
                     <h1 className={style.game__banner__infos__title}>{data.name}</h1>
                     {/* <p className={style.game__banner__dev}>Polychroma Games</p> */}
                     <p className={style.game__banner__date}>{data.created_at}</p>
+                    <p className={style.game__banner__button} onClick={addToLibrary} >+</p>
                 </div>
                 {
                     data.id &&

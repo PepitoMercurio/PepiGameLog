@@ -11,7 +11,7 @@ export default function Layout({ children }) {
     useEffect(() => {
         const token = Cookies.get("auth_token");
         if (!token) {
-            router.push("/login"); // Remplace "/login" par la route que tu veux
+            router.push("/auth/login"); // Remplace "/login" par la route que tu veux
         }
     }, []);
 
