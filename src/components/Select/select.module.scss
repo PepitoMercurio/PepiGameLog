@@ -1,0 +1,20 @@
+.select {
+    width: 10vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+
+    label {
+        margin-left: 12px;
+    }
+
+    &__selecter {
+        height: 40px;
+        width: 100%;
+        padding: 0 12px;
+        border-radius: 30px;
+        background-color: #222226;
+        border: none;
+    }
+}

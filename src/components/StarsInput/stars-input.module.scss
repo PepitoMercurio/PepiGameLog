@@ -1,0 +1,19 @@
+.stars {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+
+    &__star {
+        filter: brightness(1) contrast(0);
+        transition: filter 0.3s ease;  
+        cursor: pointer;
+
+        &:hover {
+            filter: brightness(0.9) contrast(0.9); 
+        }
+
+        &__selected {
+            filter: none; 
+        }
+    }
+}
