@@ -1,10 +1,15 @@
-import style from "./game-card.module.scss"
+"use client";
 
-const GameCard = () => {
+import style from "./game-card.module.scss"
+import { useRouter } from "next/navigation";
+
+const GameCard = ({game}) => {
+    const router = useRouter();
+    
     return (
-        <div className={style.game_card}>
-            <img className={style.game_card__image} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTemQnXFrbtqxnRAhY9jrdG2k9ld78DklQUrQ&s" />
-            <p className={style.game_card__name}>Until Then</p>
+        <div className={style.game_card} onClick={() => router.push(`/games/${game.id}`)}>
+            <img className={style.game_card__image} src={game.cover_url || "/assets/images/empty-game-card.png"} />
+            <p className={style.game_card__name}>{game.name}</p>
         </div>
     )
 }

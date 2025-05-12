@@ -19,6 +19,16 @@
         }
     }
 
+    &__seeMore {
+        cursor: pointer;
+        transition: 0.5s;
+
+        &:hover {
+            filter: drop-shadow(0 0 4px #B7B7B7);
+            transition: 0.2s;
+        }
+    }
+
 
     &__games {
         display: grid;

@@ -5,7 +5,6 @@ const Button = ({text, type}) => {
         <button 
             className={style.button}
             type="submit"
-            // onClick={() => onClick}
         >
             {text}
         </button>

@@ -5,6 +5,11 @@
     margin-top: 32px;
     gap: 16px;
 
+    &__empty {
+        grid-column: 1 / -1;
+        text-align: center;
+    }
+
         > *:nth-child(5n + 1) {
             grid-column: 1 / 3;
         }
